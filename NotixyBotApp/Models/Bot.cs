@@ -19,6 +19,7 @@ namespace NotixyBotApp.Models
 
             commandsList = new List<Command>();
             commandsList.Add(new AboutCommand());
+            commandsList.Add(new CovidCommand());
 
             client = new TelegramBotClient(AppSettings.Key);
             var hook = string.Format(AppSettings.Url, "api/message/update");

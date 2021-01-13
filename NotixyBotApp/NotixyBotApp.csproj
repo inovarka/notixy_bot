@@ -140,6 +140,7 @@
     <Compile Include="Models\Bot.cs" />
     <Compile Include="Models\Commands\AboutCommand.cs" />
     <Compile Include="Models\Commands\Command.cs" />
+    <Compile Include="Models\Commands\CovidCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
