@@ -13,6 +13,6 @@ namespace NotixyBotApp.Models.Commands
         {
             return command.Contains(this.Name);
         }
-        
+
     }
 }

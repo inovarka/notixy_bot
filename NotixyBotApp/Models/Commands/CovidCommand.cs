@@ -2,6 +2,7 @@
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace NotixyBotApp.Models.Commands
 {
@@ -23,20 +24,22 @@ namespace NotixyBotApp.Models.Commands
             }
             else
                 info = GetCovid(country);
-            
+
             await client.SendTextMessageAsync(chatId, info, replyToMessageId: messageId);
         }
 
-        public string GetCovid (string country)
+        public string GetCovid(string country)
         {
             var url = "https://api.coronastatistics.live/countries/" + country;
 
             WebClient client = new WebClient();
             string jsonData = client.DownloadString(url);
+            if(jsonData == "false".ToString())
+                return "Please enter valid country";
 
             var details = JObject.Parse(jsonData);
-           
-            if(details["country"].ToString().ToLower() != country.ToLower())
+
+            if (!details["country"].ToString().Equals(country, StringComparison.OrdinalIgnoreCase))
                 return "Please enter valid country";
 
             string covidCountry = string.Concat("Results for : ", details["country"]);

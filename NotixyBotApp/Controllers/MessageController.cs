@@ -14,10 +14,10 @@ namespace NotixyBotApp.Controllers
             var commands = Bot.Commands;
             var message = update.Message;
             var client = await Bot.Get();
-           
+
             foreach (var command in commands)
             {
-                if(command.Contains(message.Text))
+                if (command.Contains(message.Text))
                 {
                     await Task.Run(() => command.Execute(message, client));
                     break;
